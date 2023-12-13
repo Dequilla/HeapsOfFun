@@ -73,8 +73,8 @@ int main(int argc, char** argv)
 	g_sequence = random::random_sequence(10000);
 	g_sheap.reserve(1000000000); // 1gb
 	
-	const size_t TEST_COUNT = 150;
-	const size_t TEST_RECORD_NTH = 10;
+	const size_t TEST_COUNT = 500;
+	const size_t TEST_RECORD_NTH = 50;
 
 	performence::Result res_malloc = performence::run_perf_test("malloc", &test_malloc, TEST_COUNT, TEST_RECORD_NTH);
 	performence::Result res_new = performence::run_perf_test("new", &test_new_cpp, TEST_COUNT, TEST_RECORD_NTH);
