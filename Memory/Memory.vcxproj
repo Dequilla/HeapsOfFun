@@ -135,6 +135,8 @@
     <ClCompile Include="timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="containers.hpp" />
+    <ClInclude Include="math.hpp" />
     <ClInclude Include="memory.hpp" />
     <ClInclude Include="performence.hpp" />
     <ClInclude Include="random.hpp" />

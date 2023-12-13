@@ -41,5 +41,11 @@
     <ClInclude Include="performence.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="math.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="containers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
