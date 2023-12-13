@@ -14,6 +14,7 @@ namespace performence
 	{
 		std::string name;
 		timer::Duration average = 0ns;
+		timer::Duration total = 0ns;
 		std::vector<timer::Duration> runs;
 
 		void print(std::ostream& stream);
@@ -35,7 +36,7 @@ namespace performence
 			timer::Duration dur = timer.now();
 
 			results.average = (results.average + dur) / 2;
-
+			results.total += dur;
 			if(record_nth == 1 || index % record_nth == 0)
 				results.runs.push_back(dur);
 		}

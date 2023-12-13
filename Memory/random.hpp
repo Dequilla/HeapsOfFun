@@ -10,7 +10,7 @@ namespace random
 
 	inline void init()
 	{
-		 std::srand(std::time(nullptr));
+		 std::srand(static_cast<unsigned int>(std::time(nullptr)));
 	}
 
 	inline std::vector<uint32_t> random_sequence(size_t count)

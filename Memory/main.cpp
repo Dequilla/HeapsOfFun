@@ -44,24 +44,20 @@ void test_new_cpp()
 	}
 }
 
+memory::SimpleHeap g_sheap;
 void test_simple_heap()
 {
-	memory::SimpleHeap sheap;
-	sheap.reserve(1000000000); // 1gb
-
 	for(uint32_t num : g_sequence)
 	{
-		Point* p = (Point*)sheap.allocate(num * sizeof(Point));
+		Point* p = (Point*)g_sheap.allocate(num * sizeof(Point));
 		for(size_t index = 0; index < num; index++)
 		{
 			Point* p2 = &p[index];
 			p2->x = num / 2;
 			p2->y = num / 3;
 		}
-		sheap.deallocate(p);
+		g_sheap.deallocate(p);
 	}
-
-	sheap.quit();
 }
 
 int main(int argc, char** argv)
@@ -75,16 +71,20 @@ int main(int argc, char** argv)
 
 	random::init();
 	g_sequence = random::random_sequence(10000);
+	g_sheap.reserve(1000000000); // 1gb
 	
-	const size_t TEST_COUNT = 10;
+	const size_t TEST_COUNT = 150;
+	const size_t TEST_RECORD_NTH = 10;
 
-	performence::Result res_malloc = performence::run_perf_test("malloc", &test_malloc, TEST_COUNT, 2);
-	performence::Result res_new = performence::run_perf_test("new", &test_new_cpp, TEST_COUNT, 2);
-	performence::Result res_simple_heap = performence::run_perf_test("SimpleHeap", &test_simple_heap, TEST_COUNT, 2);
-	
+	performence::Result res_malloc = performence::run_perf_test("malloc", &test_malloc, TEST_COUNT, TEST_RECORD_NTH);
+	performence::Result res_new = performence::run_perf_test("new", &test_new_cpp, TEST_COUNT, TEST_RECORD_NTH);
+	performence::Result res_simple_heap = performence::run_perf_test("SimpleHeap", &test_simple_heap, TEST_COUNT, TEST_RECORD_NTH);
+
 	res_malloc.print(std::cout);
 	res_new.print(std::cout);
 	res_simple_heap.print(std::cout);
 	
+
+	g_sheap.quit();
 	return 0;
 }
