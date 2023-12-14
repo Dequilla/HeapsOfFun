@@ -18,7 +18,7 @@ namespace memory
         if(m_rootBlock == nullptr) return nullptr;
 
         Block* pBlock = m_rootBlock;
-        while(pBlock->active != false && pBlock->size < len)
+        while(pBlock != nullptr && pBlock->active != false && pBlock->size < len)
             pBlock = pBlock->next;
 
         return pBlock; // Will be nullptr if nothing found
