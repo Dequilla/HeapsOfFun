@@ -5,6 +5,14 @@
 
 namespace memory
 {
+    std::function<void*(size_t)> g_allocate = [](size_t size) -> void* {
+		return std::malloc(size);
+	};
+
+	std::function<void(void*)> g_free = [](void* ptr) {
+		std::free(ptr);
+	};
+
     Block* SimpleHeap::findInactiveBlock(size_t len)
     {
         if(m_rootBlock == nullptr) return nullptr;

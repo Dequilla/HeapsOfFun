@@ -47,5 +47,8 @@
     <ClInclude Include="containers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="visual.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
